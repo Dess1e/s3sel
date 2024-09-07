@@ -60,6 +60,11 @@ class ConfigStore:
     def add_new_config(self, config_name) -> str:
         assert self._s3cfg_path.is_file()
 
+        if '-' in config_name:
+            raise StoreException(
+                "New config name shouldn't contain '-' (dash) characters."
+            )
+
         s3cfg_md5 = get_file_md5(self._s3cfg_path)
 
         for file in self.cfg_list:

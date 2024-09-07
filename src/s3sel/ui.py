@@ -22,10 +22,12 @@ def main_ui(store: ConfigStore) -> bool:
 
     current_cfg = store.get_config_by("hash", store.get_current_config_hash())
 
+    current_cfg_name = current_cfg.name if current_cfg else "none"
+
     terminal_menu = TerminalMenu(
         menu_entries=options,
         preview_command=get_preview,
-        preview_title=f"Current config: {colored(current_cfg.name, 'cyan', attrs=['bold'])}"
+        preview_title=f"Current config: {colored(current_cfg_name, 'cyan', attrs=['bold'])}"
     )
     menu_entry_index = terminal_menu.show()
     if menu_entry_index is None:
