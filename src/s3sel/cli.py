@@ -3,17 +3,14 @@ import logging
 from pprint import pprint
 
 from s3sel.files import ConfigStore, StoreException
+from s3sel.ui import main_ui
+from s3sel.utils import program_exit
 
 log = logging.getLogger(__name__)
 
 
 logging.basicConfig(level=logging.INFO)
 
-def program_exit(status_code: int, msg: str = None) -> None:
-    if msg:
-        pre = "" if not status_code else "Error: "
-        print(f"{pre}{msg}")
-    quit(status_code)
 
 def main_cli() -> None:
     parser = argparse.ArgumentParser(prog="s3sel") 
@@ -59,9 +56,9 @@ def main_cli() -> None:
                 program_exit(0, msg=f"Config \"{cfg.name}\" with hash {s3cfg_hash} is already present in s3sel store.")
             else:
                 program_exit(0, msg=f"No config with hash {s3cfg_hash} found.")
-
         else:
-            parser.print_help()
+            main_ui(store)
+
     except StoreException as e:
         program_exit(1, msg=e.args[0])
     

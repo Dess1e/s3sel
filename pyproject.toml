@@ -1,11 +1,14 @@
 [project]
 name = "s3sel"
-version = "0.1.0"
-description = ""
+version = "0.2.0"
+description = "A small tool for simple management of multiple .s3cfg files."
 authors = [
     { name = "Andrii Stadnik", email = "astadnik99@gmail.com" }
 ]
-dependencies = []
+dependencies = [
+    "simple-term-menu==1.6.4",
+    "termcolor==2.4.0",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 

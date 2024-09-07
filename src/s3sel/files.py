@@ -1,8 +1,8 @@
 
 import os
-import hashlib
 import shutil
 import logging
+import subprocess
 from pathlib import Path
 from typing import NamedTuple
 
@@ -85,9 +85,12 @@ class ConfigStore:
     def remove_config_by_name(self, name: str):
         cfg = self._find_config_by_name(name)
         os.remove(cfg.path)
-
-    def replace_current_config(self, name: str) -> ConfigFile | None:
+    
+    def replace_current_config_by_name(self, name: str) -> ConfigFile | None:
         cfg = self._find_config_by_name(name)
+        return self.replace_current_config(cfg)
+
+    def replace_current_config(self, cfg: ConfigFile) -> ConfigFile | None:
         s3cfg_md5 = get_file_md5(self._s3cfg_path)
         if not self.get_config_by("hash", s3cfg_md5):
             if not query_yes_no(

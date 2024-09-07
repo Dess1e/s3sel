@@ -37,3 +37,9 @@ def query_yes_no(question, default="no"):
 def get_file_md5(path: str | Path) -> str:
         with open(path, "rb") as cfg_fd:
             return hashlib.md5(cfg_fd.read()).hexdigest()
+
+def program_exit(status_code: int, msg: str = None) -> None:
+    if msg:
+        pre = "" if not status_code else "Error: "
+        print(f"{pre}{msg}")
+    quit(status_code)

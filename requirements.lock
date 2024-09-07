@@ -10,3 +10,7 @@
 #   universal: false
 
 -e file:.
+simple-term-menu==1.6.4
+    # via s3sel
+termcolor==2.4.0
+    # via s3sel
