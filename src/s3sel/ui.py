@@ -25,7 +25,7 @@ def main_ui(store: ConfigStore) -> bool:
     terminal_menu = TerminalMenu(
         menu_entries=options,
         preview_command=get_preview,
-        preview_title=f"Current config: {colored(current_cfg.name, "cyan", attrs=["bold"])}"
+        preview_title=f"Current config: {colored(current_cfg.name, 'cyan', attrs=['bold'])}"
     )
     menu_entry_index = terminal_menu.show()
     if menu_entry_index is None:

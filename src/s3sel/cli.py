@@ -51,7 +51,7 @@ def main_cli() -> None:
             program_exit(0, msg=f"Replaced current config with \"{new_cfg.name}\"")
         elif args.check:
             s3cfg_hash = store.get_current_config_hash()
-            cfg = store.get_config_by("hash",  s3cfg_hash)
+            cfg = store.get_config_by("hash", s3cfg_hash)
             if cfg:
                 program_exit(0, msg=f"Config \"{cfg.name}\" with hash {s3cfg_hash} is already present in s3sel store.")
             else:
