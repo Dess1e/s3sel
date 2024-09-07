@@ -1,10 +1,11 @@
 # s3sel
 
 A small tool for simple management of multiple .s3cfg files.
+By default runs in ui mode if no arguments are provided.
 
 Running `s3sel -h` will get you started.
 
-Usage as of v0.1.0:
+Usage as of v0.2.0:
 ```
 usage: s3sel [-h] [-a] [-l] [-v] [-d] [-s] [-c] [name]
 

@@ -10,6 +10,10 @@ from s3sel.utils import program_exit
 def main_ui(store: ConfigStore) -> bool:
     cfg_map = {cfg.name: cfg for cfg in store.cfg_list}
 
+    if not len(cfg_map):
+        program_exit(0, msg="Can't run in ui mode, no configs stored. "
+                     "(Try running with -h to see how to add new config.)")
+
     def get_preview(option_value: str) -> str:
         cfg = cfg_map.get(option_value)
         return pformat(cfg._asdict(), width=20)
