@@ -1,6 +1,6 @@
 [project]
 name = "s3sel"
-version = "0.2.2"
+version = "0.2.3"
 description = "A small tool for simple management of multiple .s3cfg files."
 authors = [
     { name = "Andrii Stadnik", email = "astadnik99@gmail.com" }
